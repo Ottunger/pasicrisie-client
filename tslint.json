@@ -1,0 +1,31 @@
+{
+  "rules": {
+    "align": [true, "parameters", "statements"],
+    "array-type": [true, "array"],
+    "indent": [true, "spaces", 4],
+    "eofline": true,
+    "max-line-length": [true, 140],
+    "no-consecutive-blank-lines": [true, 1],
+    "no-default-export": true,
+    "no-duplicate-variable": true,
+    "no-eval": true,
+    "no-null-keyword": true,
+    "no-shadowed-variable": true,
+    "no-this-assignment": true,
+    "no-trailing-whitespace": true,
+    "no-unused-variable": true,
+    "no-use-before-declare": true,
+    "no-var-keyword": true,
+    "no-void-expression": ["ignore-arrow-function-shorthand"],
+    "object-literal-key-quotes": [true, "as-needed"],
+    "prefer-const": true,
+    "quotemark": [true, "single"],
+    "semicolon": [true, "always"],
+    "switch-default": true,
+    "triple-equals": [true, "allow-undefined-check"],
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}]
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ]
+}

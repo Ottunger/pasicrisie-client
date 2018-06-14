@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle *ngIf="!modal">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <button ion-button *ngIf="modal" (click)="modal.dismiss()" style="float: left; box-shadow: none;" class="disable-hover bar-buttons bar-buttons-md bar-button bar-button-md bar-button-default bar-button-default-md bar-button-menutoggle bar-button-menutoggle-md">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        <ion-title>
+            {{'search' | translate}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="presentLangPopover($event)">
+                <ion-icon name="apps"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Recherche simple dans les tomes</ion-card-title>
+            <p>Vous pouvez choisir un tome précis ou rechercher dans tous les tomes.<br/>
+                Ensuite, saisir les termes recherchés dans le champ texte.<br/>
+                Mettre le terme recherché entre guillemets pour avoir une recherche plus précise (par exemple : "révision").<br/>
+                Séparer les termes par & pour rechercher plusieurs termes non consécutifs (par exemple : révision & astreinte.)</p>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-label color="primary" stacked>{{'search.tome' | translate}}</ion-label>
+            <ion-select [(ngModel)]="tome" cancelText="{{ 'cancel' | translate }}" okText="{{ 'done' | translate }}">
+                <ion-option [value]="undefined">{{'search.tome.all' | translate}}</ion-option>
+                <ion-option *ngFor="let tome of ab.books.tomes" value="tome.id">{{tome.name}} ({{tome.yearBegin}} - {{tome.yearEnd}})</ion-option>
+            </ion-select>
+            <ion-label color="primary" stacked>{{'search.query' | translate}}</ion-label>
+            <ion-input type="text" [(ngModel)]="query"></ion-input>
+            <button ion-button block color="secondary" (click)="searchTome()"
+                    [disabled]="!query">{{'search.do' | translate}}
+            </button>
+            <hr/>
+
+            <ion-list>
+                <ng-container *ngFor="let res of results.books.tomes; let i = index">
+                    <ion-card *ngIf="i < displays[0]">
+                        <ion-card-content class="book-wrapper state-tome">
+                            <button ion-item (click)="goTo(res.id)">
+                                <ion-label>{{res.name}}</ion-label>
+                            </button>
+                            <button ion-item (click)="goTo(res.id)">
+                                <ion-icon name="alarm" item-start></ion-icon>
+                                <ion-label>{{res.match}}</ion-label>
+                            </button>
+                            <button ion-item (click)="goTo(res.id)">
+                                <ion-icon name="analytics" item-start></ion-icon>
+                                <ion-label>{{res.desc}}</ion-label>
+                            </button>
+                        </ion-card-content>
+                    </ion-card>
+                </ng-container>
+            </ion-list>
+            <ion-infinite-scroll (ionInfinite)="doInfinite(0)">
+                <ion-infinite-scroll-content></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

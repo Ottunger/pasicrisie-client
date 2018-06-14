@@ -1,0 +1,118 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            {{'profile' | translate}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="presentLangPopover($event)">
+                <ion-icon name="apps"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card *ngIf="loggedIn">
+        <ion-card-content>
+            <h1>{{'profile.welcome' | translate}}</h1>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <button ion-button block color="primary" (click)="search()">
+                            {{'search.begin' | translate}}
+                        </button>
+                    </ion-col>
+                    <ion-col>
+                        <button ion-button block color="secondary" (click)="api.logout()">
+                            {{'user.logout' | translate}}
+                        </button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-grid *ngIf="!loggedIn">
+        <ion-row>
+            <ion-col *ngIf="!mfaStep && !pwdStep && !changeStep && !signUpStep">
+                <ion-label color="primary" stacked>{{'login.username' | translate}}</ion-label>
+                <ion-input type="text"
+                           [(ngModel)]="username"
+                           autocapitalize="off"></ion-input>
+                <ion-label color="primary" stacked>{{'login.password' | translate}}</ion-label>
+                <ion-input type="password" [(ngModel)]="password"></ion-input>
+                <button ion-button block color="secondary" (click)="login()"
+                        [disabled]="!username || !password || password.length < 10">{{'login.login' | translate}}
+                </button>
+            </ion-col>
+            <ion-col *ngIf="mfaStep">
+                <ion-item>
+                    <ion-icon name="ionitron" item-start></ion-icon>
+                    <ion-label>{{'login.codeTo' | translate}} {{mfaData.destination}}</ion-label>
+                </ion-item>
+                <ion-label color="primary" stacked>{{'login.code' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="code"></ion-input>
+                <button ion-button block color="secondary" (click)="mfaData.callback()"
+                        [disabled]="!code">{{'login.login' | translate}}
+                </button>
+                <button ion-button block color="primary" (click)="cancel()">{{'cancel' | translate}}</button>
+            </ion-col>
+            <ion-col *ngIf="pwdStep">
+                <ion-item>
+                    <ion-icon name="ionitron" item-start></ion-icon>
+                    <ion-label>{{'login.codeTo' | translate}} {{mfaData.destination}}</ion-label>
+                </ion-item>
+                <ion-label color="primary" stacked>{{'login.code' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="code"></ion-input>
+                <ion-label color="primary" stacked>{{'login.password' | translate}}</ion-label>
+                <ion-input type="password" [(ngModel)]="password"></ion-input>
+                <ion-label color="primary" stacked>{{'login.password2' | translate}}</ion-label>
+                <ion-input type="password" [(ngModel)]="password2"></ion-input>
+                <button ion-button block color="secondary" (click)="pwdData.callback()"
+                        [disabled]="!code">{{'login.doPass' | translate}}
+                </button>
+                <button ion-button block color="primary" (click)="cancel()">{{'cancel' | translate}}</button>
+            </ion-col>
+            <ion-col *ngIf="changeStep">
+                <ion-label color="primary" stacked>{{'login.password2' | translate}}</ion-label>
+                <ion-input type="password" [(ngModel)]="password2"></ion-input>
+                <button ion-button block color="secondary" (click)="changeData.callback()"
+                        [disabled]="!password2 || password2.length < 10">{{'login.loginChange' | translate}}
+                </button>
+                <button ion-button block color="primary" (click)="cancel()">{{'cancel' | translate}}</button>
+            </ion-col>
+            <ion-col *ngIf="signUpStep">
+                <ion-label color="primary" stacked>{{'login.username' | translate}}</ion-label>
+                <ion-input type="text"
+                           [(ngModel)]="username"
+                           autocapitalize="off"></ion-input>
+                <ion-label color="primary" stacked>{{'login.password' | translate}}</ion-label>
+                <ion-input type="password" [(ngModel)]="password"></ion-input>
+                <ion-label color="primary" stacked>{{'login.password2' | translate}}</ion-label>
+                <ion-input type="password" [(ngModel)]="password2"></ion-input>
+                <ion-label color="primary" stacked>{{'login.phone' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="phone"></ion-input>
+                <button ion-button block color="secondary" (click)="create()"
+                        [disabled]="!username || !password || password.length < 10 || !phone">{{'login.signUp' | translate}}
+                </button>
+                <button ion-button block color="primary" (click)="cancel()">{{'cancel' | translate}}</button>
+            </ion-col>
+            <!-- Right col -->
+            <ion-col>
+                <button ion-button block color="primary" (click)="fillDetails()">{{'login.fillDetails' | translate}}
+                </button>
+                <button ion-button block color="primary" (click)="signUp()"
+                        [disabled]="mfaStep || pwdStep || changeStep">{{'login.signUp' | translate}}
+                </button>
+                <button ion-button block color="primary" (click)="resendCode()"
+                        [disabled]="!username">{{'login.resendCode' | translate}}
+                </button>
+                <button ion-button block color="primary" (click)="forgot1()"
+                        [disabled]="!username">{{'login.forgot1' | translate}}
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

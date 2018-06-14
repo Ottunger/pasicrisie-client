@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle *ngIf="!modal">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <button ion-button *ngIf="modal" (click)="modal.dismiss()" style="float: left; box-shadow: none;" class="disable-hover bar-buttons bar-buttons-md bar-button bar-button-md bar-button-default bar-button-default-md bar-button-menutoggle bar-button-menutoggle-md">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+        <ion-title>
+            {{'insert' | translate}}
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button color="primary" (click)="presentLangPopover($event)">
+                <ion-icon name="apps"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content>

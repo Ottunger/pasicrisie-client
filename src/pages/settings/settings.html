@@ -1,0 +1,10 @@
+<ion-list>
+    <ion-list-header>{{ 'settings.title' | translate }}</ion-list-header>
+    <ion-item>
+        <ion-label>{{ 'settings.language' | translate }}</ion-label>
+        <ion-select [(ngModel)]="lang" (ionChange)="close()" cancelText="{{ 'cancel' | translate }}" okText="{{ 'done' | translate }}">
+            <ion-option value="fr">Français</ion-option>
+            <ion-option value="en">English</ion-option>
+        </ion-select>
+    </ion-item>
+</ion-list>
