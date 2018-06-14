@@ -1,13 +1,9 @@
 import {AppConfig} from './models';
 
-export const ES_SERVICE = 'ES';
-
 export const API_ENVS: any = {
     prod: {
         baseUri: 'https://www.amazonaws.com/yyy',
-        servicesUris: {
-            ES: 'https://www.amazones.com'
-        }
+        servicesUris: {}
     }
 };
 

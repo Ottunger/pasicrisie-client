@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {Platform, PopoverController, ToastController} from 'ionic-angular';
 import {ApiService} from '../../services/api.service';
 import {UnsubscribingComponent} from '../unsubscribing.component';
-import {Books} from '../../services/models';
 
 @Component({
     selector: 'page-search',
@@ -30,7 +29,7 @@ export class SearchPage extends UnsubscribingComponent {
                 private toastCtrl: ToastController) {
         super(true, popCtrl, platform);
 
-        this.api.getAvailableBooks().then(ab => this.ab = ab, err => {
+        this.api.getAvailableBooks({}).then(ab => this.ab = ab, err => {
             this.toastCtrl.create({
                 message: this.api.transform(err),
                 duration: 4000,

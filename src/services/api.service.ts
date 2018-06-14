@@ -1,13 +1,12 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EventEmitter, Injectable} from '@angular/core';
 import * as AWS from 'aws-sdk/global';
-import {Client} from 'elasticsearch';
 import {AlertController} from 'ionic-angular';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/timeout';
 import {Application} from './application.service';
-import {ENVS, ES_SERVICE} from './configs';
-import {AppConfig, BackendMessage, BackendMessagePolicy, Books, Tome} from './models';
+import {ENVS} from './configs';
+import {AppConfig, BackendMessage, BackendMessagePolicy, Results, Tome, TomeSearchOptions} from './models';
 
 @Injectable()
 export class ApiService extends Application {
@@ -16,7 +15,6 @@ export class ApiService extends Application {
     CONFIG: AppConfig;
     jwtToken: string;
     changeRoot$ = new EventEmitter();
-    esClient: Client;
 
     // Used for authentication towards the API server
     private get httpOptions() {
@@ -37,12 +35,7 @@ export class ApiService extends Application {
     }
 
     private buildEnv() {
-        console.log(this.mode);
         this.CONFIG = ENVS.find(env => env.name === this.mode);
-        this.esClient = new Client({
-            host: this.CONFIG.api.servicesUris[ES_SERVICE],
-            log: 'warning'
-        });
         AWS.config.region = this.CONFIG.aws.region;
     }
 
@@ -85,14 +78,13 @@ export class ApiService extends Application {
             });
     }
 
-    getAvailableBooks(): Promise<Books> {
-        return this.esClient.mget<Tome>({
-            index: 'books',
-            source: ['id', 'name', 'yearBegin', 'yearEnd']
-        }).then(res => ({
-            books: {
-                tomes: res.docs.map(doc => doc._source)
-            }
-        }));
+    getAvailableBooks(opts: TomeSearchOptions): Promise<Tome[]> {
+        return new Promise((resolve, reject) => {
+            this.http.get<Results<Tome[]>>(this.CONFIG.api.baseUri + 'find-books', this.httpOptions)
+                    .timeout(20000).take(1).subscribe((res: Results<Tome[]>) => {
+                this.processMessages(res);
+                resolve(res.result);
+            }, reject.bind(undefined, 'search.noBooks'));
+        });
     }
 }

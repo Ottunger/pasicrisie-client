@@ -54,17 +54,26 @@ export interface AWSPasswordCommand {
     password: string;
 }
 
+export enum TomeType {
+    RED = 'red',
+    BLUE = 'blue'
+}
 export interface Tome {
     _id: string;
+    type: TomeType;
+    author: string;
     name: string;
-    yearBegin: number;
-    yearEnd: number;
-    match?: string;
-    desc: string;
+    keywords: string[];
+    date: string;
+}
+export interface TomeSearchOptions {
+    type?: TomeType;
+    dateMin?: string;
+    dateMax?: string;
+    author?: string;
+    name?: string;
 }
 
-export interface Books extends BackendMessage {
-    books: {
-        tomes: Tome[]
-    };
+export interface Results<T> extends BackendMessage {
+    result: T;
 }
