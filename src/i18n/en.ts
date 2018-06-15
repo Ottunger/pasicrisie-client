@@ -15,7 +15,9 @@ export const en_strings = {
     'search.author': 'Author',
     'search.name': 'Parution description',
     'search.keywords': 'Keywords',
+    'search.fulltext': 'Document body',
     'search.noBooks': 'Cannot get a list of books',
+    'search.doKeyword': 'Add as keyword',
     'search.do': 'Search!',
 
     insert: 'Indexation',

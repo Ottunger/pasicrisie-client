@@ -15,7 +15,9 @@ export const fr_strings = {
     'search.author': 'Auteur',
     'search.name': 'Description de la parution',
     'search.keywords': 'Mots clés',
+    'search.fulltext': 'Corps du document',
     'search.noBooks': 'Pas de liste de livres',
+    'search.doKeyword': 'Ajouter comme filtre',
     'search.do': 'Rechercher!',
 
     insert: 'Indexation',

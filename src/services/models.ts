@@ -70,6 +70,7 @@ export interface TomeSearchOptions {
     author?: string;
     name?: string;
     keywords?: string;
+    fulltext?: string;
 }
 
 export interface Results<T> extends BackendMessage {

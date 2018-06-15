@@ -42,9 +42,23 @@
                 <ion-input type="text" [(ngModel)]="name"></ion-input>
             </ion-item>
             <ion-item>
+                <ion-label color="primary" stacked>{{'search.fulltext' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="fulltext" [disabled]="type === 'bulletin'"></ion-input>
+            </ion-item>
+            <ion-item>
                 <ion-label color="primary" stacked>{{'search.keywords' | translate}}</ion-label>
                 <ion-input type="text" [(ngModel)]="keywords"></ion-input>
             </ion-item>
+            <ion-item>
+                <ion-select [(ngModel)]="keyword" (ionChange)="!keywords? keywords = keyword : keywords = keywords + ' ' + keyword"
+                            cancelText="{{'cancel' | translate}}" okText="{{'search.doKeyword' | translate}}">
+                    <ion-option *ngFor="let possibleKeyword of possibleKeywords" [value]="possibleKeyword[0]">{{possibleKeyword[1]}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ng-container *ngIf="showSections">
+
+            </ng-container>
+
             <button ion-button block color="secondary" (click)="searchTome()"
                     [disabled]="!query">{{'search.do' | translate}}
             </button>
