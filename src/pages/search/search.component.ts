@@ -10,9 +10,9 @@ import {UnsubscribingComponent} from '../unsubscribing.component';
 })
 export class SearchPage extends UnsubscribingComponent {
     author: string;
-    name: string;
+    desc: string;
     keywords: string;
-    type: string;
+    kind: string;
     fulltext: string;
     availableTypes: string[] = [];
     availableBooks: Tome[] = [];
@@ -36,11 +36,11 @@ export class SearchPage extends UnsubscribingComponent {
 
     searchTome() {
         this.api.getAvailableBooks({
-            type: this.type,
+            kind: this.kind,
             author: this.author,
-            name: this.name,
+            desc: this.desc,
             keywords: this.keywords,
-            fulltext: this.type === 'bulletin' ? undefined : this.fulltext
+            fulltext: this.kind === 'bulletin' ? undefined : this.fulltext
         }).then(availableBooks => this.availableBooks = availableBooks,
             this.api.presentErr.bind(this.api));
     }

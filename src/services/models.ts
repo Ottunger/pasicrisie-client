@@ -64,11 +64,11 @@ export interface Tome {
     date: string;
 }
 export interface TomeSearchOptions {
-    type: string;
+    kind: string;
     dateMin?: string;
     dateMax?: string;
     author?: string;
-    name?: string;
+    desc?: string;
     keywords?: string;
     fulltext?: string;
 }

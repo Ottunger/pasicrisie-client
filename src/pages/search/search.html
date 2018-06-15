@@ -29,8 +29,8 @@
         <ion-card-content>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.tome' | translate}}</ion-label>
-                <ion-select [(ngModel)]="type" cancelText="{{'cancel' | translate}}" okText="{{'done' | translate}}">
-                    <ion-option *ngFor="let type of availableTypes" [value]="type">{{type}}</ion-option>
+                <ion-select [(ngModel)]="kind" cancelText="{{'cancel' | translate}}" okText="{{'done' | translate}}">
+                    <ion-option *ngFor="let kind of availableTypes" [value]="kind">{{kind}}</ion-option>
                 </ion-select>
             </ion-item>
             <ion-item>
@@ -38,12 +38,12 @@
                 <ion-input type="text" [(ngModel)]="author"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary" stacked>{{'search.name' | translate}}</ion-label>
-                <ion-input type="text" [(ngModel)]="name"></ion-input>
+                <ion-label color="primary" stacked>{{'search.desc' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="desc"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.fulltext' | translate}}</ion-label>
-                <ion-input type="text" [(ngModel)]="fulltext" [disabled]="type === 'bulletin'"></ion-input>
+                <ion-input type="text" [(ngModel)]="fulltext" [disabled]="kind === 'bulletin'"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.keywords' | translate}}</ion-label>
@@ -55,21 +55,16 @@
                     <ion-option *ngFor="let possibleKeyword of possibleKeywords" [value]="possibleKeyword[0]">{{possibleKeyword[1]}}</ion-option>
                 </ion-select>
             </ion-item>
-            <ng-container *ngIf="showSections">
-
-            </ng-container>
-
             <button ion-button block color="secondary" (click)="searchTome()"
-                    [disabled]="!query">{{'search.do' | translate}}
-            </button>
+                [disabled]="!kind">{{'search.do' | translate}}</button>
             <hr/>
 
             <ion-list>
-                <ng-container *ngFor="let res of results; let i = index">
+                <ng-container *ngFor="let res of availableBooks; let i = index">
                     <ion-card *ngIf="i < displays">
                         <ion-card-content class="book-wrapper state-tome">
                             <button ion-item (click)="goTo(res)">
-                                <ion-label>{{res.name}}</ion-label>
+                                <ion-label>{{res.desc}}</ion-label>
                             </button>
                             <button ion-item (click)="goTo(res)">
                                 <ion-icon name="alarm" item-start></ion-icon>

@@ -109,8 +109,9 @@ export class ApiService extends Application {
 
     getAvailableBooks(opts: TomeSearchOptions): Promise<Tome[]> {
         return new Promise((resolve, reject) => {
-            this.http.get<Results<Tome[]>>(this.CONFIG.api.baseUri + 'find-books?dateMin=' + opts.dateMin + '&dateMax=' + opts.dateMax
-                + '&author=' + opts.author + '&name=' + opts.name + '&keywords=' + opts.keywords + '&fulltext=' + opts.fulltext,
+            this.http.get<Results<Tome[]>>(this.CONFIG.api.baseUri + 'find-books?dateMin=' + (opts.dateMin || '') + '&dateMax='
+                + (opts.dateMax || '') + '&author=' + (opts.author || '') + '&desc=' + (opts.desc || '') + '&keywords='
+                + (opts.keywords || '') + '&fulltext=' + (opts.fulltext || '') + '&kind=' + opts.kind,
                 this.httpOptions)
                     .timeout(20000).take(1).subscribe((res: Results<Tome[]>) => {
                 this.processMessages(res);

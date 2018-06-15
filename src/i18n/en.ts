@@ -13,7 +13,7 @@ export const en_strings = {
     'search.begin': 'Begin search',
     'search.tome': 'Available parutions',
     'search.author': 'Author',
-    'search.name': 'Parution description',
+    'search.desc': 'Parution description',
     'search.keywords': 'Keywords',
     'search.fulltext': 'Document body',
     'search.noBooks': 'Cannot get a list of books',

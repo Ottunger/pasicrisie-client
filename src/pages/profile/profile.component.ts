@@ -105,7 +105,6 @@ export class ProfilePage extends UnsubscribingComponent {
     }
 
     cognitoCallback(message: string, result: any) {
-        console.warn(message);
         if (message) {
             if(message === UserLoginService.PASSWORD_CHANGE_REQUIRED) {
                 this.changeStep = true;

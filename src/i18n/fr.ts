@@ -13,7 +13,7 @@ export const fr_strings = {
     'search.begin': 'Lancer la recherche',
     'search.tome': 'Tomes disponibles',
     'search.author': 'Auteur',
-    'search.name': 'Description de la parution',
+    'search.desc': 'Description de la parution',
     'search.keywords': 'Mots clés',
     'search.fulltext': 'Corps du document',
     'search.noBooks': 'Pas de liste de livres',
