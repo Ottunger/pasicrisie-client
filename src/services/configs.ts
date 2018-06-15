@@ -2,7 +2,7 @@ import {AppConfig} from './models';
 
 export const API_ENVS: any = {
     prod: {
-        baseUri: 'https://www.amazonaws.com/yyy',
+        baseUri: 'https://8vln1owxz6.execute-api.eu-west-2.amazonaws.com/production/api/',
         servicesUris: {}
     }
 };
@@ -10,15 +10,16 @@ export const API_ENVS: any = {
 export const AWS_ENVS: any = {
     prod: {
         production: true,
-        region: 'eu-central-1',
-        identityPoolId: 'eu-central-1:b2f2bdcf-72a7-4a4d-842a-e414c4491114',
-        userPoolId: 'eu-central-1_esSk6WFax',
-        clientId: '271ercj66ulkdmt9llmqmcd8rc',
+        region: 'eu-west-2',
+        userPoolId: 'eu-west-2_I3zbY3Ita',
+        clientId: '3b8q6picrd1p377bn1356nml6q',
         cognito_idp_endpoint: '',
+        identityPoolId: '',
         cognito_identity_endpoint: '',
         sts_endpoint: '',
         analyticsAppId: '',
-        analyticsAppTitle: ''
+        analyticsAppTitle: '',
+        s3: 'https://s3.eu-west-2.amazonaws.com/'
     }
 };
 

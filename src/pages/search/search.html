@@ -27,30 +27,41 @@
                 Séparer les termes par & pour rechercher plusieurs termes non consécutifs (par exemple : révision & astreinte.)</p>
         </ion-card-header>
         <ion-card-content>
-            <ion-label color="primary" stacked>{{'search.tome' | translate}}</ion-label>
-            <ion-select [(ngModel)]="tome" cancelText="{{ 'cancel' | translate }}" okText="{{ 'done' | translate }}">
-                <ion-option [value]="undefined">{{'search.tome.all' | translate}}</ion-option>
-                <ion-option *ngFor="let tome of ab.books.tomes" value="tome.id">{{tome.name}} ({{tome.yearBegin}} - {{tome.yearEnd}})</ion-option>
-            </ion-select>
-            <ion-label color="primary" stacked>{{'search.query' | translate}}</ion-label>
-            <ion-input type="text" [(ngModel)]="query"></ion-input>
+            <ion-item>
+                <ion-label color="primary" stacked>{{'search.tome' | translate}}</ion-label>
+                <ion-select [(ngModel)]="type" cancelText="{{'cancel' | translate}}" okText="{{'done' | translate}}">
+                    <ion-option *ngFor="let type of availableTypes" [value]="type">{{type}}</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>{{'search.author' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="author"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>{{'search.name' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary" stacked>{{'search.keywords' | translate}}</ion-label>
+                <ion-input type="text" [(ngModel)]="keywords"></ion-input>
+            </ion-item>
             <button ion-button block color="secondary" (click)="searchTome()"
                     [disabled]="!query">{{'search.do' | translate}}
             </button>
             <hr/>
 
             <ion-list>
-                <ng-container *ngFor="let res of results.books.tomes; let i = index">
-                    <ion-card *ngIf="i < displays[0]">
+                <ng-container *ngFor="let res of results; let i = index">
+                    <ion-card *ngIf="i < displays">
                         <ion-card-content class="book-wrapper state-tome">
-                            <button ion-item (click)="goTo(res.id)">
+                            <button ion-item (click)="goTo(res)">
                                 <ion-label>{{res.name}}</ion-label>
                             </button>
-                            <button ion-item (click)="goTo(res.id)">
+                            <button ion-item (click)="goTo(res)">
                                 <ion-icon name="alarm" item-start></ion-icon>
                                 <ion-label>{{res.match}}</ion-label>
                             </button>
-                            <button ion-item (click)="goTo(res.id)">
+                            <button ion-item (click)="goTo(res)">
                                 <ion-icon name="analytics" item-start></ion-icon>
                                 <ion-label>{{res.desc}}</ion-label>
                             </button>
@@ -58,7 +69,7 @@
                     </ion-card>
                 </ng-container>
             </ion-list>
-            <ion-infinite-scroll (ionInfinite)="doInfinite(0)">
+            <ion-infinite-scroll (ionInfinite)="doInfinite()">
                 <ion-infinite-scroll-content></ion-infinite-scroll-content>
             </ion-infinite-scroll>
         </ion-card-content>

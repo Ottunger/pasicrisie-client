@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EventEmitter, Injectable} from '@angular/core';
 import * as AWS from 'aws-sdk/global';
-import {AlertController} from 'ionic-angular';
+import {AlertController, ToastController} from 'ionic-angular';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/timeout';
 import {Application} from './application.service';
@@ -13,7 +13,7 @@ export class ApiService extends Application {
     private appVersion = '0.0.1';
     private mode: string;
     CONFIG: AppConfig;
-    jwtToken: string;
+    private jwtToken: string;
     changeRoot$ = new EventEmitter();
 
     // Used for authentication towards the API server
@@ -27,11 +27,17 @@ export class ApiService extends Application {
         };
     }
 
+    get getJwtToken() {
+        return this.jwtToken;
+    }
+
     constructor(private http: HttpClient,
-                private alertCtrl: AlertController) {
+                private alertCtrl: AlertController,
+                private toastCtrl: ToastController) {
         super();
         this.getStoredItem('env').then(mode => this.mode = mode || 'prod', () => this.mode = 'prod')
             .then(this.buildEnv.bind(this));
+        this.getStoredItem('token').then(token => this.jwtToken = token, () => undefined);
     }
 
     private buildEnv() {
@@ -39,10 +45,23 @@ export class ApiService extends Application {
         AWS.config.region = this.CONFIG.aws.region;
     }
 
-    public setEnv(envName: string) {
+    setEnv(envName: string) {
         this.mode = envName;
         this.storeItem('env', envName);
         this.buildEnv();
+    }
+
+    setJwtToken(token: string) {
+        this.jwtToken = token;
+        this.storeItem('token', token);
+    }
+
+    presentErr(err: string) {
+        this.toastCtrl.create({
+            message: this.transform(err),
+            duration: 4000,
+            position: 'bottom'
+        }).present();
     }
 
     private processMessages(msgs: BackendMessage) {
@@ -76,6 +95,16 @@ export class ApiService extends Application {
                     }]
                 }).present();
             });
+    }
+
+    getTomeTypes(): Promise<string[]> {
+        return new Promise((resolve, reject) => {
+            this.http.get<Results<string[]>>(this.CONFIG.api.baseUri + 'find-types', this.httpOptions)
+                    .timeout(20000).take(1).subscribe((res: Results<string[]>) => {
+                this.processMessages(res);
+                resolve(res.result);
+            }, reject.bind(undefined, 'search.noBooks'));
+        });
     }
 
     getAvailableBooks(opts: TomeSearchOptions): Promise<Tome[]> {

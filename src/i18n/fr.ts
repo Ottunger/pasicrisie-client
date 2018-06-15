@@ -12,8 +12,9 @@ export const fr_strings = {
     search: 'Recherche',
     'search.begin': 'Lancer la recherche',
     'search.tome': 'Tomes disponibles',
-    'search.query': 'Recherche à effectuer',
-    'search.tome.all': 'Tous disponibles',
+    'search.author': 'Auteur',
+    'search.name': 'Description de la parution',
+    'search.keywords': 'Mots clés',
     'search.noBooks': 'Pas de liste de livres',
     'search.do': 'Rechercher!',
 

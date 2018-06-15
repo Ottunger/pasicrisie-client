@@ -10,8 +10,8 @@ export class UserLoginService {
     static MISSING_FIELDS = 'missing_fields';
 
     private onLoginSuccess = (callback: CognitoCallback, session: CognitoUserSession) => {
-        this.cognitoUtil.api.jwtToken = session.getIdToken().getJwtToken();
-        AWS.config.credentials = this.cognitoUtil.buildCognitoCreds(this.cognitoUtil.api.jwtToken);
+        this.cognitoUtil.api.setJwtToken(session.getIdToken().getJwtToken());
+        AWS.config.credentials = this.cognitoUtil.buildCognitoCreds(this.cognitoUtil.api.getJwtToken);
 
         // So, when CognitoIdentity authenticates a user, it doesn't actually hand us the IdentityID,
         // used by many of our other handlers. This is handled by some sly underhanded calls to AWS Cognito

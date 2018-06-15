@@ -7,7 +7,6 @@ import {StatusBar} from '@ionic-native/status-bar';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {ProfilePage} from '../pages/profile/profile.component';
 import {SearchPage} from '../pages/search/search.component';
-import {SearchResultPage} from '../pages/search/search-result.component';
 import {InsertPage} from '../pages/insert/insert.component';
 import {SettingsPopover} from '../pages/settings/settings.component';
 import {TranslatePipe} from '../pipes/translate.pipe';
@@ -25,7 +24,6 @@ import {UserRegistrationService} from '../services/aws/user-registration.service
         MyApp,
         ProfilePage,
         SearchPage,
-        SearchResultPage,
         SettingsPopover,
         InsertPage
     ],
@@ -39,7 +37,6 @@ import {UserRegistrationService} from '../services/aws/user-registration.service
         MyApp,
         ProfilePage,
         SearchPage,
-        SearchResultPage,
         SettingsPopover,
         InsertPage
     ],

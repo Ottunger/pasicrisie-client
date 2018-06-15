@@ -12,8 +12,9 @@ export const en_strings = {
     search: 'Search',
     'search.begin': 'Begin search',
     'search.tome': 'Available parutions',
-    'search.query': 'Query to lookup',
-    'search.tome.all': 'All available',
+    'search.author': 'Author',
+    'search.name': 'Parution description',
+    'search.keywords': 'Keywords',
     'search.noBooks': 'Cannot get a list of books',
     'search.do': 'Search!',
 

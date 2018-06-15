@@ -26,7 +26,7 @@
                         </button>
                     </ion-col>
                     <ion-col>
-                        <button ion-button block color="secondary" (click)="api.logout()">
+                        <button ion-button block color="secondary" (click)="loginService.cognitoUtil.logout()">
                             {{'user.logout' | translate}}
                         </button>
                     </ion-col>
@@ -44,7 +44,7 @@
                 <ion-label color="primary" stacked>{{'login.password' | translate}}</ion-label>
                 <ion-input type="password" [(ngModel)]="password"></ion-input>
                 <button ion-button block color="secondary" (click)="login()"
-                        [disabled]="!username || !password || password.length < 10">{{'login.login' | translate}}
+                        [disabled]="!username || !password || password.length < 6">{{'login.login' | translate}}
                 </button>
             </ion-col>
             <ion-col *ngIf="mfaStep">
@@ -79,7 +79,7 @@
                 <ion-label color="primary" stacked>{{'login.password2' | translate}}</ion-label>
                 <ion-input type="password" [(ngModel)]="password2"></ion-input>
                 <button ion-button block color="secondary" (click)="changeData.callback()"
-                        [disabled]="!password2 || password2.length < 10">{{'login.loginChange' | translate}}
+                        [disabled]="!password2 || password2.length < 6">{{'login.loginChange' | translate}}
                 </button>
                 <button ion-button block color="primary" (click)="cancel()">{{'cancel' | translate}}</button>
             </ion-col>
@@ -95,7 +95,7 @@
                 <ion-label color="primary" stacked>{{'login.phone' | translate}}</ion-label>
                 <ion-input type="text" [(ngModel)]="phone"></ion-input>
                 <button ion-button block color="secondary" (click)="create()"
-                        [disabled]="!username || !password || password.length < 10 || !phone">{{'login.signUp' | translate}}
+                        [disabled]="!username || !password || password.length < 6 || !phone">{{'login.signUp' | translate}}
                 </button>
                 <button ion-button block color="primary" (click)="cancel()">{{'cancel' | translate}}</button>
             </ion-col>

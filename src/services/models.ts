@@ -12,14 +12,15 @@ export interface ApiConfig {
 export interface AWSEnvironment {
     production: boolean;
     region: string;
-    identityPoolId: string;
     userPoolId: string;
     clientId: string;
     cognito_idp_endpoint: string;
+    identityPoolId: string;
     cognito_identity_endpoint: string;
     sts_endpoint: string;
     analyticsAppId: string;
     analyticsAppTitle: string;
+    s3: string;
 }
 
 export enum BackendMessagePolicy {
@@ -54,24 +55,21 @@ export interface AWSPasswordCommand {
     password: string;
 }
 
-export enum TomeType {
-    RED = 'red',
-    BLUE = 'blue'
-}
 export interface Tome {
     _id: string;
-    type: TomeType;
+    type: string;
     author: string;
     name: string;
     keywords: string[];
     date: string;
 }
 export interface TomeSearchOptions {
-    type?: TomeType;
+    type: string;
     dateMin?: string;
     dateMax?: string;
     author?: string;
     name?: string;
+    keywords?: string;
 }
 
 export interface Results<T> extends BackendMessage {

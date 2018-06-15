@@ -33,7 +33,8 @@ export class CognitoUtil {
     cognitoCreds: AWS.CognitoIdentityCredentials;
 
     logout() {
-        this.getCurrentUser().signOut();
+        const user = this.getCurrentUser();
+        if(user) user.signOut();
     }
 
     getUserPool() {
