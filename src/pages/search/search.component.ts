@@ -46,7 +46,7 @@ export class SearchPage extends UnsubscribingComponent {
     }
 
     goTo(tome: Tome) {
-        window.open(this.api.CONFIG.aws.s3 + 'pasicrisie-pdf/' + tome.type + '/' + tome._id + '.pdf', '_blank');
+        window.open(this.api.CONFIG.aws.s3 + 'pasicrisie-pdf/' + tome.kind + '/' + tome._id + '.pdf', '_blank');
     }
 
     doInfinite() {

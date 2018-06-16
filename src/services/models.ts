@@ -57,11 +57,11 @@ export interface AWSPasswordCommand {
 
 export interface Tome {
     _id: string;
-    type: string;
+    kind: string;
     author: string;
-    name: string;
+    desc: string;
     keywords: string[];
-    date: string;
+    issue: string;
 }
 export interface TomeSearchOptions {
     kind: string;

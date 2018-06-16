@@ -64,11 +64,11 @@
                     <ion-card *ngIf="i < displays">
                         <ion-card-content class="book-wrapper state-tome">
                             <button ion-item (click)="goTo(res)">
-                                <ion-label>{{res.desc}}</ion-label>
+                                <ion-label>{{res.author}}</ion-label>
                             </button>
                             <button ion-item (click)="goTo(res)">
                                 <ion-icon name="alarm" item-start></ion-icon>
-                                <ion-label>{{res.match}}</ion-label>
+                                <ion-label>{{res.issue | date:'dd/MM/yyyy'}}</ion-label>
                             </button>
                             <button ion-item (click)="goTo(res)">
                                 <ion-icon name="analytics" item-start></ion-icon>
