@@ -22,9 +22,8 @@
         <ion-card-header>
             <ion-card-title>Recherche simple dans les tomes</ion-card-title>
             <p>Vous pouvez choisir un tome précis ou rechercher dans tous les tomes.<br/>
-                Ensuite, saisir les termes recherchés dans le champ texte.<br/>
-                Mettre le terme recherché entre guillemets pour avoir une recherche plus précise (par exemple : "révision").<br/>
-                Séparer les termes par & pour rechercher plusieurs termes non consécutifs (par exemple : révision & astreinte.)</p>
+                Ensuite, saisir les terminologies recherchées dans le champ texte.<br/>
+                Le séparateur "|" peut être utilisé pour rechercher au moins une des parties.</p>
         </ion-card-header>
         <ion-card-content>
             <ion-item>
@@ -50,9 +49,9 @@
                 <ion-input type="text" [(ngModel)]="keywords"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-select [(ngModel)]="keyword" (ionChange)="!keywords? keywords = keyword : keywords = keywords + ' ' + keyword"
+                <ion-select [(ngModel)]="keyword" (ionChange)="!keywords? keywords = keyword : keywords = keywords + '|' + keyword.join('|')"
                             cancelText="{{'cancel' | translate}}" okText="{{'search.doKeyword' | translate}}">
-                    <ion-option *ngFor="let possibleKeyword of possibleKeywords" [value]="possibleKeyword[0]">{{possibleKeyword[1]}}</ion-option>
+                    <ion-option *ngFor="let possibleKey of possibleKeys" [value]="possibleKeywords[possibleKey]">{{possibleKey}}</ion-option>
                 </ion-select>
             </ion-item>
             <button ion-button block color="secondary" (click)="searchTome()"
