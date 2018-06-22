@@ -6,7 +6,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/timeout';
 import {Application} from './application.service';
 import {ENVS} from './configs';
-import {AppConfig, BackendMessage, BackendMessagePolicy, Results, Tome, TomeSearchOptions} from './models';
+import {AppConfig, AWSUser, BackendMessage, BackendMessagePolicy, Results, Tome, TomeSearchOptions} from './models';
 
 @Injectable()
 export class ApiService extends Application {
@@ -14,6 +14,7 @@ export class ApiService extends Application {
     private mode: string;
     CONFIG: AppConfig;
     private jwtToken: string;
+    userInfo: AWSUser;
     changeRoot$ = new EventEmitter();
 
     // Used for authentication towards the API server
@@ -95,6 +96,17 @@ export class ApiService extends Application {
                     }]
                 }).present();
             });
+    }
+
+    info(): Promise<AWSUser> {
+        return new Promise((resolve, reject) => {
+            this.http.get<Results<AWSUser>>(this.CONFIG.api.baseUri + 'me', this.httpOptions)
+                    .timeout(20000).take(1).subscribe((res: Results<AWSUser>) => {
+                this.processMessages(res);
+                this.userInfo = res.result;
+                resolve(res.result);
+            }, reject.bind(undefined, 'external.down'));
+        });
     }
 
     getTomeTypes(): Promise<string[]> {

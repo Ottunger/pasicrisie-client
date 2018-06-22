@@ -376,4 +376,8 @@ export class SearchPage extends UnsubscribingComponent {
     doInfinite() {
         this.displays += 10;
     }
+
+    invalidOption(type: string): boolean {
+        return this.api.userInfo['cognito:groups'].indexOf(type === 'bulletin'? 'bulletin_readers' : 'recueil_readers') === -1;
+    }
 }

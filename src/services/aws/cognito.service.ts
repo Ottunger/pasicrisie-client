@@ -35,6 +35,7 @@ export class CognitoUtil {
     logout() {
         const user = this.getCurrentUser();
         if(user) user.signOut();
+        window.location.reload();
     }
 
     getUserPool() {

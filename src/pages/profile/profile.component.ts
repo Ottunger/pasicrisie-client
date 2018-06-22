@@ -92,10 +92,6 @@ export class ProfilePage extends UnsubscribingComponent {
         }).present();
     }
 
-    search() {
-        this.api.changeRoot$.emit(SearchPage);
-    }
-
     login() {
         this.loginService.authenticate(this.username, this.password, this);
     }
@@ -151,7 +147,7 @@ export class ProfilePage extends UnsubscribingComponent {
                 }).present();
             }
         } else {
-            this.api.changeRoot$.emit(SearchPage);
+            this.leaveToSearch();
         }
     }
 
@@ -198,7 +194,7 @@ export class ProfilePage extends UnsubscribingComponent {
                                         position: 'bottom'
                                     }).present();
                                 } else {
-                                    this.api.changeRoot$.emit(SearchPage);
+                                    this.leaveToSearch();
                                 }
                             }
                         });
@@ -275,5 +271,11 @@ export class ProfilePage extends UnsubscribingComponent {
         this.changeStep = false;
         this.signUpStep = false;
         return false;
+    }
+
+    private leaveToSearch() {
+        this.api.info().then(() => {
+            this.api.changeRoot$.emit(SearchPage);
+        }, () => this.loginService.cognitoUtil.logout());
     }
 }

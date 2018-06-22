@@ -29,7 +29,7 @@
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.tome' | translate}}</ion-label>
                 <ion-select [(ngModel)]="kind" cancelText="{{'cancel' | translate}}" okText="{{'done' | translate}}">
-                    <ion-option *ngFor="let kind of availableTypes" [value]="kind">{{kind}}</ion-option>
+                    <ion-option *ngFor="let kind of availableTypes" [value]="kind" [disabled]="invalidOption(kind)">{{kind}}</ion-option>
                 </ion-select>
             </ion-item>
             <ion-item>

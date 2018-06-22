@@ -45,6 +45,7 @@ export interface AWSUser {
     family_name: string;
     gender: string;
     password: string;
+    'cognito:groups'?: string[];
     // Own stuff
     loggedIn?: boolean;
 }
