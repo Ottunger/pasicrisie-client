@@ -99,7 +99,7 @@ export class ProfilePage extends UnsubscribingComponent {
     isLoggedIn(message: string, loggedIn: boolean) {
         this.loggedIn = loggedIn;
         if(loggedIn && location.search.indexOf('=') > -1) {
-            const tome = decodeURIComponent(location.search.split('=')[1]).split('/');
+            const tome = decodeURIComponent(location.search.split('=')[1]).split('-');
             this.api.getPdf({
                 _id: tome[1],
                 kind: tome[0],
@@ -287,7 +287,7 @@ export class ProfilePage extends UnsubscribingComponent {
     private leaveToSearch() {
         this.api.info().then(() => {
             if(location.search.indexOf('=') > -1) {
-                const tome = decodeURIComponent(location.search.split('=')[1]).split('/');
+                const tome = decodeURIComponent(location.search.split('=')[1]).split('-');
                 this.api.getPdf({
                     _id: tome[1],
                     kind: tome[0],
