@@ -98,6 +98,17 @@ export class ProfilePage extends UnsubscribingComponent {
 
     isLoggedIn(message: string, loggedIn: boolean) {
         this.loggedIn = loggedIn;
+        if(loggedIn && location.search.indexOf('=') > -1) {
+            const tome = decodeURIComponent(location.search.split('=')[1]).split('/');
+            this.api.getPdf({
+                _id: tome[1],
+                kind: tome[0],
+                author: undefined,
+                desc: undefined,
+                keywords: undefined,
+                issue: undefined
+            }, false);
+        }
     }
 
     cognitoCallback(message: string, result: any) {
@@ -275,7 +286,19 @@ export class ProfilePage extends UnsubscribingComponent {
 
     private leaveToSearch() {
         this.api.info().then(() => {
-            this.api.changeRoot$.emit(SearchPage);
+            if(location.search.indexOf('=') > -1) {
+                const tome = decodeURIComponent(location.search.split('=')[1]).split('/');
+                this.api.getPdf({
+                    _id: tome[1],
+                    kind: tome[0],
+                    author: undefined,
+                    desc: undefined,
+                    keywords: undefined,
+                    issue: undefined
+                }, false);
+            } else {
+                this.api.changeRoot$.emit(SearchPage);
+            }
         }, () => this.loginService.cognitoUtil.logout());
     }
 }

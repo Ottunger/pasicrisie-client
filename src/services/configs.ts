@@ -3,7 +3,9 @@ import {AppConfig} from './models';
 export const API_ENVS: any = {
     prod: {
         baseUri: 'https://owr63owwn7.execute-api.eu-central-1.amazonaws.com/production/api/',
-        servicesUris: {}
+        servicesUris: {
+            s3: 'https://s3.eu-central-1.amazonaws.com/'
+        }
     }
 };
 
@@ -14,12 +16,11 @@ export const AWS_ENVS: any = {
         userPoolId: 'eu-central-1_TOi0ZoW4p',
         clientId: '16hg05s78cjuhiu1uqnu65910o',
         cognito_idp_endpoint: '',
-        identityPoolId: '',
+        identityPoolId: 'eu-central-1:7df5d151-5bfa-4935-b012-4cf12dc7836c',
         cognito_identity_endpoint: '',
         sts_endpoint: '',
         analyticsAppId: '',
-        analyticsAppTitle: '',
-        s3: 'https://s3.eu-central-1.amazonaws.com/'
+        analyticsAppTitle: ''
     }
 };
 

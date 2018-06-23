@@ -369,10 +369,6 @@ export class SearchPage extends UnsubscribingComponent {
             this.api.presentErr.bind(this.api));
     }
 
-    goTo(tome: Tome) {
-        window.open(this.api.CONFIG.aws.s3 + 'pasicrisie-pdf/' + tome.kind + '/' + tome._id + '.pdf', '_blank');
-    }
-
     doInfinite() {
         this.displays += 10;
     }

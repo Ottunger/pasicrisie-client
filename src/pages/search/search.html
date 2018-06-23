@@ -62,14 +62,14 @@
                 <ng-container *ngFor="let res of availableBooks; let i = index">
                     <ion-card *ngIf="i < displays">
                         <ion-card-content class="book-wrapper state-tome">
-                            <button ion-item (click)="goTo(res)">
+                            <button ion-item (click)="api.getPdf(res, true)">
                                 <ion-label>{{res.author}}</ion-label>
                             </button>
-                            <button ion-item (click)="goTo(res)">
+                            <button ion-item (click)="api.getPdf(res, true)">
                                 <ion-icon name="alarm" item-start></ion-icon>
                                 <ion-label>{{res.issue | date:'dd/MM/yyyy'}}</ion-label>
                             </button>
-                            <button ion-item (click)="goTo(res)">
+                            <button ion-item (click)="api.getPdf(res, true)">
                                 <ion-icon name="analytics" item-start></ion-icon>
                                 <ion-label>{{res.desc}}</ion-label>
                             </button>

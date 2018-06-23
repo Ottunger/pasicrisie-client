@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {EventEmitter, Injectable} from '@angular/core';
-import * as AWS from 'aws-sdk/global';
+import * as AWS from 'aws-sdk';
 import {AlertController, ToastController} from 'ionic-angular';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/timeout';
@@ -43,7 +43,12 @@ export class ApiService extends Application {
 
     private buildEnv() {
         this.CONFIG = ENVS.find(env => env.name === this.mode);
-        AWS.config.region = this.CONFIG.aws.region;
+        AWS.config.update({
+            region: this.CONFIG.aws.region,
+            credentials: new AWS.CognitoIdentityCredentials({
+                IdentityPoolId: this.CONFIG.aws.identityPoolId
+            })
+        });
     }
 
     setEnv(envName: string) {
@@ -129,6 +134,21 @@ export class ApiService extends Application {
                 this.processMessages(res);
                 resolve(res.result);
             }, reject.bind(undefined, 'search.noBooks'));
+        });
+    }
+
+    getPdf(tome: Tome, blank: boolean) {
+        const s3 = new AWS.S3();
+        s3.getObject({
+            Bucket: 'pasicrisie-pdf',
+            Key: tome.kind + '/' + tome._id + '.pdf'
+        }, (err, data) => {
+            if(err) {
+                console.warn(err);
+                return;
+            }
+            const uri = window.URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'}));
+            window.open(uri, blank? '_blank' : '_self', undefined, !blank);
         });
     }
 }

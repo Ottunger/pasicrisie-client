@@ -20,7 +20,6 @@ export interface AWSEnvironment {
     sts_endpoint: string;
     analyticsAppId: string;
     analyticsAppTitle: string;
-    s3: string;
 }
 
 export enum BackendMessagePolicy {
