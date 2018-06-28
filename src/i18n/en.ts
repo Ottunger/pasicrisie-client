@@ -1,3 +1,4 @@
+/* tslint:disable */
 export const en_strings = {
     cancel: 'Cancel',
     errors: 'Error',
@@ -12,13 +13,16 @@ export const en_strings = {
     search: 'Search',
     'search.begin': 'Begin search',
     'search.tome': 'Available parutions',
-    'search.author': 'Author',
+    'search.author': 'Author choice',
     'search.desc': 'Parution description',
-    'search.keywords': 'Keywords',
+    'search.keywords': 'Keywords choice',
+    'search.doneKeywords': 'Selection of keywords',
+    'search.indices': 'Menu indices',
     'search.fulltext': 'Document body',
-    'search.noBooks': 'Cannot get a list of books',
+    'search.noBooks': 'Cannot get a list of documents',
     'search.doKeyword': 'Add as keyword',
     'search.do': 'Search!',
+    'search.intro1': 'To fulfill your search, we suggest you combine criteria. The available ones are :',
 
     insert: 'Indexation',
 
@@ -45,6 +49,10 @@ export const en_strings = {
     'login.gender': 'Gender as M/F',
     'login.fillDetails': 'Fill details for registration',
     'login.fillDetailsLong': 'Validate your details for a new personal or remotely created account',
+    'profile.intro1': '<h2>Dear reader,</h2>' +
+        '<p>We wish you a warm welcome to the Bulletin administratif de la Pasicrisie Luxembourgeoise.<br/>' +
+        'This module will allow you to search by theme or content in order to find past arrêts/jugements.<br/>' +
+        'If you are not a customer yet, and you wish to become so, we kindly ask you to query (abo@pasicrisie.lu).</p>',
 
     'settings.title': 'Settings',
     'settings.language': 'Language'

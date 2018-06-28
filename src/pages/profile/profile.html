@@ -15,6 +15,7 @@
 </ion-header>
 
 <ion-content>
+    <div [innerHTML]="'profile.intro1' | translate"></div>
     <ion-card *ngIf="loggedIn">
         <ion-card-content>
             <h1>{{'profile.welcome' | translate}}</h1>

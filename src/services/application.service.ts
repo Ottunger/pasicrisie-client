@@ -11,7 +11,7 @@ export class Application {
             fr: fr_strings
         };
         this.lang = 'fr';
-        this.getStoredItem('lang').then(lang => this.lang = lang, () => undefined);
+        this.getStoredItem('lang').then(lang => this.lang = lang || 'fr', () => this.lang = 'fr');
     }
 
     getLang(): string {

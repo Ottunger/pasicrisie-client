@@ -1,3 +1,4 @@
+/* tslint:disable */
 export const fr_strings = {
     cancel: 'Annuler',
     errors: 'Erreur',
@@ -11,14 +12,17 @@ export const fr_strings = {
 
     search: 'Recherche',
     'search.begin': 'Lancer la recherche',
-    'search.tome': 'Tomes disponibles',
-    'search.author': 'Auteur',
+    'search.tome': 'Type de parution',
+    'search.author': 'Choix de l\'auteur',
     'search.desc': 'Description de la parution',
-    'search.keywords': 'Mots clés',
+    'search.keywords': 'Choix des mots-clés',
+    'search.doneKeywords': 'Suggestion de mots-clés',
+    'search.indices': 'Index du menu',
     'search.fulltext': 'Corps du document',
-    'search.noBooks': 'Pas de liste de livres',
+    'search.noBooks': 'Aucune liste de documents',
     'search.doKeyword': 'Ajouter comme filtre',
     'search.do': 'Rechercher!',
+    'search.intro1': 'Afin d’effectuer votre recherche, nous vous proposons de combiner certains critères pour l’affiner. A savoir :',
 
     insert: 'Indexation',
 
@@ -46,6 +50,10 @@ export const fr_strings = {
     'login.gender': 'Sexe (M/F)',
     'login.fillDetails': 'Détails de compte',
     'login.fillDetailsLong': 'Remplissez vos détails pour un nouveau compte personnel ou invité',
+    'profile.intro1': '<h2>Cher(chère) abonné(e),<h2>' +
+        '<p>Nous vous souhaitons la bienvenue dans le module de recherche du Bulletin administratif de la Pasicrisie Luxembourgeoise.<br/>' +
+        'Ce module vous permettra de faire des recherches à la fois thématiques et par mots-clés pour retrouver d’éventuels arrêts/jugements.<br/>' +
+        'Si vous n’êtes pas encore abonné, et que vous souhaitez l’être, nous vous invitons à faire votre demande auprès de (abo@pasicrisie.lu).</p>',
 
     'settings.title': 'Paramètres',
     'settings.language': 'Langue'

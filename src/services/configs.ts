@@ -13,10 +13,10 @@ export const AWS_ENVS: any = {
     prod: {
         production: true,
         region: 'eu-central-1',
-        userPoolId: 'eu-central-1_TOi0ZoW4p',
-        clientId: '16hg05s78cjuhiu1uqnu65910o',
+        userPoolId: 'eu-central-1_81WWeoPRL',
+        clientId: '10rp37fdevo727m976mupshgha',
         cognito_idp_endpoint: '',
-        identityPoolId: 'eu-central-1:7df5d151-5bfa-4935-b012-4cf12dc7836c',
+        identityPoolId: 'eu-central-1:07c3df3e-a634-4f34-b1dd-259557222659',
         cognito_identity_endpoint: '',
         sts_endpoint: '',
         analyticsAppId: '',

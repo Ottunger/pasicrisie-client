@@ -79,3 +79,6 @@ ion-fab ion-icon {
 button {
   cursor: pointer;
 }
+ion-input, ion-select {
+  background-color: map-get($colors, 'light-secondary');
+}
