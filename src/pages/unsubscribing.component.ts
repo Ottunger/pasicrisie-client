@@ -47,6 +47,7 @@ export abstract class UnsubscribingComponent implements OnDestroy {
     }
 
     presentLangPopover($event: any) {
-        this.popCtrl.create(SettingsPopover).present({ev: $event});
+        // TODO: allow popup to change language
+        // this.popCtrl.create(SettingsPopover).present({ev: $event});
     }
 }

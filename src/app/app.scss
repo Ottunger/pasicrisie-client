@@ -82,3 +82,7 @@ button {
 ion-input, ion-select {
   background-color: map-get($colors, 'light-secondary');
 }
+p.p-margins {
+  margin-left: 20px;
+  margin-right: 20px;
+}

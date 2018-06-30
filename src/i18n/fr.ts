@@ -39,6 +39,7 @@ export const fr_strings = {
     'login.resendCode': 'Renvoyer le code',
     'login.forgot1': 'Mot de passe perdu?',
     'login.password2': 'Confirmation',
+    'login.password3': 'Nouveau mot de passe',
     'login.doPass': 'Changer de mot de passe',
     'login.loginChange': 'Connection en changeant de mot de passe',
     'login.signUp': 'Enregistrer',
@@ -50,8 +51,8 @@ export const fr_strings = {
     'login.gender': 'Sexe (M/F)',
     'login.fillDetails': 'Détails de compte',
     'login.fillDetailsLong': 'Remplissez vos détails pour un nouveau compte personnel ou invité',
-    'profile.intro1': '<h2>Cher(chère) abonné(e),<h2>' +
-        '<p>Nous vous souhaitons la bienvenue dans le module de recherche du Bulletin administratif de la Pasicrisie Luxembourgeoise.<br/>' +
+    'profile.intro1': '<p class="p-margins">Cher(chère) abonné(e),<p>' +
+        '<p class="p-margins">Nous vous souhaitons la bienvenue dans le module de recherche du Bulletin administratif de la Pasicrisie Luxembourgeoise.<br/>' +
         'Ce module vous permettra de faire des recherches à la fois thématiques et par mots-clés pour retrouver d’éventuels arrêts/jugements.<br/>' +
         'Si vous n’êtes pas encore abonné, et que vous souhaitez l’être, nous vous invitons à faire votre demande auprès de (abo@pasicrisie.lu).</p>',
 

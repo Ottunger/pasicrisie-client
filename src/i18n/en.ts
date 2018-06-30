@@ -38,6 +38,7 @@ export const en_strings = {
     'login.resendCode': 'Resend code',
     'login.forgot1': 'Forgot password?',
     'login.password2': 'Password confirm',
+    'login.password3': 'New password',
     'login.doPass': 'Set password',
     'login.loginChange': 'Log in changing password',
     'login.signUp': 'Sign Up',
@@ -49,8 +50,8 @@ export const en_strings = {
     'login.gender': 'Gender as M/F',
     'login.fillDetails': 'Fill details for registration',
     'login.fillDetailsLong': 'Validate your details for a new personal or remotely created account',
-    'profile.intro1': '<h2>Dear reader,</h2>' +
-        '<p>We wish you a warm welcome to the Bulletin administratif de la Pasicrisie Luxembourgeoise.<br/>' +
+    'profile.intro1': '<p class="p-margins">Dear reader,</p>' +
+        '<p class="p-margins">We wish you a warm welcome to the Bulletin administratif de la Pasicrisie Luxembourgeoise.<br/>' +
         'This module will allow you to search by theme or content in order to find past arrêts/jugements.<br/>' +
         'If you are not a customer yet, and you wish to become so, we kindly ask you to query (abo@pasicrisie.lu).</p>',
 
