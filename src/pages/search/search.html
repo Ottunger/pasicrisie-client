@@ -48,7 +48,7 @@
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.doneKeywords' | translate}}</ion-label>
                 <ion-select [(ngModel)]="keyword" (ionChange)="!keywords? keywords = keyword : keywords = keywords + '|' + keyword.join('|')"
-                            cancelText="{{'cancel' | translate}}" okText="{{'search.doKeyword' | translate}}">
+                            (ionCancel)="keywords = ''" cancelText="{{'cancel' | translate}}" okText="{{'search.doKeyword' | translate}}">
                     <ion-option *ngFor="let possibleKey of possibleKeys" [value]="possibleKeywords[possibleKey]">{{possibleKey}}</ion-option>
                 </ion-select>
             </ion-item>
@@ -75,10 +75,12 @@
                             <button ion-item (click)="api.getPdf(res, true)">
                                 <ion-label>{{res.author}}</ion-label>
                             </button>
+                            <!--
                             <button ion-item (click)="api.getPdf(res, true)">
                                 <ion-icon name="alarm" item-start></ion-icon>
                                 <ion-label>{{res.issue | date:'dd/MM/yyyy'}}</ion-label>
                             </button>
+                            -->
                             <button ion-item (click)="api.getPdf(res, true)">
                                 <ion-icon name="analytics" item-start></ion-icon>
                                 <ion-label>{{res.desc}}</ion-label>
