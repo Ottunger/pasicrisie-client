@@ -18,7 +18,7 @@ export const en_strings = {
     'search.keywords': 'Keywords choice',
     'search.doneKeywords': 'Selection of keywords',
     'search.indices': 'Menu indices',
-    'search.fulltext': 'Document body',
+    'search.fulltext': 'Enter your search terms',
     'search.noBooks': 'Cannot get a list of documents',
     'search.doKeyword': 'Add as keyword',
     'search.do': 'Search!',

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Platform, PopoverController} from 'ionic-angular';
+import {Platform} from 'ionic-angular';
 import {ApiService} from '../../services/api.service';
 import {UnsubscribingComponent} from '../unsubscribing.component';
 
@@ -9,8 +9,7 @@ import {UnsubscribingComponent} from '../unsubscribing.component';
 })
 export class InsertPage extends UnsubscribingComponent {
     constructor(public api: ApiService,
-                public popCtrl: PopoverController,
                 public platform: Platform) {
-        super(true, popCtrl, platform);
+        super(true, platform);
     }
 }

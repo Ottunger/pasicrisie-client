@@ -31,57 +31,30 @@
             </ion-item>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.author' | translate}}</ion-label>
-                <ion-input type="text" [(ngModel)]="author"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label color="primary" stacked>{{'search.desc' | translate}}</ion-label>
-                <ion-input type="text" [(ngModel)]="desc"></ion-input>
+                <ion-input type="text" [(ngModel)]="author" value="Pasicrisie"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.fulltext' | translate}}</ion-label>
-                <ion-input type="text" [(ngModel)]="fulltext" [disabled]="kind === 'bulletin'"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label color="primary" stacked>{{'search.keywords' | translate}}</ion-label>
-                <ion-input type="text" [(ngModel)]="keywords"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label color="primary" stacked>{{'search.doneKeywords' | translate}}</ion-label>
-                <ion-select [(ngModel)]="keyword" (ionChange)="!keywords? keywords = keyword : keywords = keywords + '|' + keyword.join('|')"
-                            (ionCancel)="keywords = ''" cancelText="{{'cancel' | translate}}" okText="{{'search.doKeyword' | translate}}">
-                    <ion-option *ngFor="let possibleKey of possibleKeys" [value]="possibleKeywords[possibleKey]">{{possibleKey}}</ion-option>
-                </ion-select>
+                <ion-input type="text" (keydown)="($event.keyCode === 13 && searchTome()) || true" [(ngModel)]="fulltext"></ion-input>
             </ion-item>
             <button ion-button block color="secondary" (click)="searchTome()"
-                [disabled]="!kind">{{'search.do' | translate}}</button>
+                    [disabled]="!kind">{{'search.do' | translate}}</button>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.indices' | translate}}</ion-label>
-                <ion-select [(ngModel)]="index" cancelText="{{'cancel' | translate}}" okText="{{'submit' | translate}}">
-                    <ion-option *ngFor="let possibleIndex of possibleIndices; let i = index" [value]="i">{{possibleIndex}}</ion-option>
+                <ion-select [(ngModel)]="pdf" cancelText="{{'cancel' | translate}}" okText="{{'submit' | translate}}" (ionChange)="onMenuSelect()">
+                    <ion-option *ngFor="let possibleIndex of possibleIndices;" [value]="possibleIndex">{{possibleIndex}}</ion-option>
                 </ion-select>
             </ion-item>
             <hr/>
-
-            <ion-list *ngIf="index">
-                <ion-item *ngFor="let row of computeIndices()">
-                    <ion-label>{{row}}</ion-label>
-                </ion-item>
-            </ion-list>
 
             <ion-list>
                 <ng-container *ngFor="let res of availableBooks; let i = index">
                     <ion-card *ngIf="i < displays">
                         <ion-card-content class="book-wrapper state-tome">
-                            <button ion-item (click)="api.getPdf(res, true)">
+                            <button ion-item (click)="api.getPdf(res, false)">
                                 <ion-label>{{res.author}}</ion-label>
                             </button>
-                            <!--
-                            <button ion-item (click)="api.getPdf(res, true)">
-                                <ion-icon name="alarm" item-start></ion-icon>
-                                <ion-label>{{res.issue | date:'dd/MM/yyyy'}}</ion-label>
-                            </button>
-                            -->
-                            <button ion-item (click)="api.getPdf(res, true)">
+                            <button ion-item (click)="api.getPdf(res, false)">
                                 <ion-icon name="analytics" item-start></ion-icon>
                                 <ion-label>{{res.desc}}</ion-label>
                             </button>

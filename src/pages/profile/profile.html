@@ -43,7 +43,7 @@
                            [(ngModel)]="username"
                            autocapitalize="off"></ion-input>
                 <ion-label color="primary" stacked>{{'login.password' | translate}}</ion-label>
-                <ion-input type="password" [(ngModel)]="password"></ion-input>
+                <ion-input type="password" (keydown)="($event.keyCode === 13 && login()) || true" [(ngModel)]="password"></ion-input>
                 <button ion-button block color="secondary" (click)="login()"
                         [disabled]="!username || !password || password.length < 6">{{'login.login' | translate}}
                 </button>
@@ -70,7 +70,7 @@
                 <ion-label color="primary" stacked>{{'login.password' | translate}}</ion-label>
                 <ion-input type="password" [(ngModel)]="password"></ion-input>
                 <ion-label color="primary" stacked>{{'login.password2' | translate}}</ion-label>
-                <ion-input type="password" [(ngModel)]="password2"></ion-input>
+                <ion-input type="password" (keydown)="($event.keyCode === 13 && pwdData.callback()) || true" [(ngModel)]="password2"></ion-input>
                 <button ion-button block color="secondary" (click)="pwdData.callback()"
                         [disabled]="!code">{{'login.doPass' | translate}}
                 </button>
@@ -78,7 +78,7 @@
             </ion-col>
             <ion-col *ngIf="changeStep">
                 <ion-label color="primary" stacked>{{'login.password3' | translate}}</ion-label>
-                <ion-input type="password" [(ngModel)]="password2"></ion-input>
+                <ion-input type="password" (keydown)="($event.keyCode === 13 && changeData.callback()) || true" [(ngModel)]="password2"></ion-input>
                 <button ion-button block color="secondary" (click)="changeData.callback()"
                         [disabled]="!password2 || password2.length < 6">{{'login.loginChange' | translate}}
                 </button>

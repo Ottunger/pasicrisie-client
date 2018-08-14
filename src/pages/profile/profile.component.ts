@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AlertController, Platform, PopoverController, ToastController} from 'ionic-angular';
+import {AlertController, Platform, ToastController} from 'ionic-angular';
 import {SearchPage} from '../search/search.component';
 import {ApiService} from '../../services/api.service';
 import {UnsubscribingComponent} from '../unsubscribing.component';
@@ -43,12 +43,10 @@ export class ProfilePage extends UnsubscribingComponent {
     constructor(public api: ApiService,
                 public loginService: UserLoginService,
                 public registrationService: UserRegistrationService,
-                public popCtrl: PopoverController,
                 public platform: Platform,
                 private alertCtrl: AlertController,
                 private toastCtrl: ToastController) {
-        super(true, popCtrl, platform);
-
+        super(true, platform);
         this.loginService.isAuthenticated(this);
     }
 

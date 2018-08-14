@@ -18,7 +18,7 @@ export const fr_strings = {
     'search.keywords': 'Choix des mots-clés',
     'search.doneKeywords': 'Suggestion de mots-clés',
     'search.indices': 'Index du menu',
-    'search.fulltext': 'Corps du document',
+    'search.fulltext': 'Saisissez les termes recherchés',
     'search.noBooks': 'Aucune liste de documents',
     'search.doKeyword': 'Ajouter comme filtre',
     'search.do': 'Rechercher!',

@@ -1,7 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
-import {Platform, PopoverController} from 'ionic-angular';
+import {Platform} from 'ionic-angular';
 import {Subscription} from 'rxjs/Subscription';
-import {SettingsPopover} from './settings/settings.component';
 
 export abstract class UnsubscribingComponent implements OnDestroy {
     private subs: Subscription[] = [];
@@ -9,7 +8,6 @@ export abstract class UnsubscribingComponent implements OnDestroy {
     private unRegisterer: Function;
 
     constructor(private doChange: boolean,
-                public popCtrl: PopoverController,
                 public platform?: Platform) {}
 
     ngOnDestroy() {
