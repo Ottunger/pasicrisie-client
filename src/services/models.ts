@@ -62,6 +62,7 @@ export interface Tome {
     desc: string;
     keywords: string[];
     issue: string;
+    fulltext: string[];
 }
 export interface TomeSearchOptions {
     kind: string;

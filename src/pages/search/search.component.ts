@@ -87,7 +87,8 @@ export class SearchPage extends UnsubscribingComponent {
             author: undefined,
             desc: undefined,
             keywords: undefined,
-            issue: undefined
+            issue: undefined,
+            fulltext: undefined
         }, false);
     }
 

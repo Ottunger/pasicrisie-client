@@ -54,9 +54,9 @@
                             <button ion-item (click)="api.getPdf(res, false)">
                                 <ion-label>{{res.author}}</ion-label>
                             </button>
-                            <button ion-item (click)="api.getPdf(res, false)">
+                            <button *ngIf="res.fulltext[0] !== true" ion-item (click)="api.getPdf(res, false)">
                                 <ion-icon name="analytics" item-start></ion-icon>
-                                <ion-label>{{res.desc}}</ion-label>
+                                <ion-label>{{res.fulltext[0]}}</ion-label>
                             </button>
                         </ion-card-content>
                     </ion-card>

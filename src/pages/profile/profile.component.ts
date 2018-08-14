@@ -104,7 +104,8 @@ export class ProfilePage extends UnsubscribingComponent {
                 author: undefined,
                 desc: undefined,
                 keywords: undefined,
-                issue: undefined
+                issue: undefined,
+                fulltext: undefined
             }, false);
         }
     }
@@ -292,7 +293,8 @@ export class ProfilePage extends UnsubscribingComponent {
                     author: undefined,
                     desc: undefined,
                     keywords: undefined,
-                    issue: undefined
+                    issue: undefined,
+                    fulltext: undefined
                 }, false);
             } else {
                 this.api.changeRoot$.emit(SearchPage);
