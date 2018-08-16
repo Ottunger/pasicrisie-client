@@ -13,16 +13,20 @@ export const en_strings = {
     search: 'Search',
     'search.begin': 'Begin search',
     'search.tome': 'Available parutions',
-    'search.author': 'Author choice',
+    'search.author': 'Author',
     'search.desc': 'Parution description',
     'search.keywords': 'Keywords choice',
     'search.doneKeywords': 'Selection of keywords',
-    'search.indices': 'Menu indices',
-    'search.fulltext': 'Enter your search terms',
+    'search.indices': 'Advanced search',
+    'search.indicesLong': 'Here is a list of chapters within the bulletin. After making a choice, you\'ll visualize it and will be able to search directly' +
+        ' within the file.',
+    'search.fulltext': 'Recherche plein texte',
+    'search.fulltextLong': 'You can input your search query in the field underneath ; the system will respond with a list of files where the term' +
+        ' has been found.',
     'search.noBooks': 'Cannot get a list of documents',
     'search.doKeyword': 'Add as keyword',
     'search.do': 'Search!',
-    'search.intro1': 'To fulfill your search, we suggest you combine criteria. The available ones are :',
+    'search.intro1': 'We are pleased to help you search documents using two methods : the plain text search and the advanced search.',
 
     insert: 'Indexation',
 
