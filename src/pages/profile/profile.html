@@ -102,11 +102,13 @@
             </ion-col>
             <!-- Right col -->
             <ion-col>
-                <button ion-button block color="primary" (click)="fillDetails()">{{'login.fillDetails' | translate}}
-                </button>
+                <!--
+                <button ion-button block color="primary" (click)="fillDetails()">
+                        {{'login.fillDetails' | translate}}</button>
                 <button ion-button block color="primary" (click)="signUp()"
                         [disabled]="mfaStep || pwdStep || changeStep">{{'login.signUp' | translate}}
                 </button>
+                -->
                 <button ion-button block color="primary" (click)="resendCode()"
                         [disabled]="!username">{{'login.resendCode' | translate}}
                 </button>

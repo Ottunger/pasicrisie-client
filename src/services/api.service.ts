@@ -139,6 +139,7 @@ export class ApiService extends Application {
 
     getPdf(tome: Tome, blank: boolean) {
         const s3 = new AWS.S3();
+        const newWindow: any = window.open('/', blank? '_blank' : '_self', undefined, true);
         s3.getObject({
             Bucket: 'pasicrisie-pdf',
             Key: tome.kind + '/' + tome._id + '.pdf'
@@ -147,8 +148,7 @@ export class ApiService extends Application {
                 console.warn(err);
                 return;
             }
-            const uri = window.URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'}));
-            window.open(uri, blank? '_blank' : '_self', undefined, !blank);
+            newWindow.location = URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'}));
         });
     }
 }

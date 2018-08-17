@@ -34,14 +34,14 @@
                 <ion-input type="text" [(ngModel)]="author" value="Pasicrisie"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary">{{'search.fulltextLong' | translate}}</ion-label>
+                <ion-label color="primary" style="white-space: unset;">{{'search.fulltextLong' | translate}}</ion-label>
             </ion-item>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.fulltext' | translate}}</ion-label>
                 <ion-input type="text" (keydown)="($event.keyCode === 13 && searchTome()) || true" [(ngModel)]="fulltext"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-label color="primary">{{'search.indicesLong' | translate}}</ion-label>
+                <ion-label color="primary" style="white-space: unset;">{{'search.indicesLong' | translate}}</ion-label>
             </ion-item>
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.indices' | translate}}</ion-label>
@@ -57,10 +57,10 @@
                 <ng-container *ngFor="let res of availableBooks; let i = index">
                     <ion-card *ngIf="i < displays">
                         <ion-card-content class="book-wrapper state-tome">
-                            <button ion-item (click)="api.getPdf(res, false)">
+                            <button ion-item (click)="api.getPdf(res, true)">
                                 <ion-label>{{res.author}}: {{res._id}}</ion-label>
                             </button>
-                            <button *ngIf="res.fulltext[0] !== true" ion-item (click)="api.getPdf(res, false)">
+                            <button *ngIf="res.fulltext[0] !== true" ion-item (click)="api.getPdf(res, true)">
                                 <ion-icon name="analytics" item-start></ion-icon>
                                 <ion-label>{{res.fulltext[0]}}</ion-label>
                             </button>

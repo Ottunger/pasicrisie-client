@@ -89,7 +89,7 @@ export class SearchPage extends UnsubscribingComponent {
             keywords: undefined,
             issue: undefined,
             fulltext: undefined
-        }, false);
+        }, true);
     }
 
     doInfinite() {
