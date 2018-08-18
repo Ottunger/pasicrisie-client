@@ -82,7 +82,8 @@ export class SearchPage extends UnsubscribingComponent {
     onMenuSelect() {
         this.api.getPdf({
             _id: this.pdf.toLowerCase().replace(/'/g, '')
-                .replace(/ /g, '_').replace(/\s*\(.*\)\s*/g, ''),
+                .replace(/ /g, '_').replace(/\s*\(.*\)\s*/g, '')
+                .replace(/_$/, ''),
             kind: 'bulletin',
             author: undefined,
             desc: undefined,
