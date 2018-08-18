@@ -25,6 +25,7 @@ export const fr_strings = {
     'search.doKeyword': 'Ajouter comme filtre',
     'search.do': 'Rechercher!',
     'search.intro1': 'Nous vous invitons à rechercher vos documents selon deux types de recherche : la recherche plein texte et la recherche avancée.',
+    'search.noItem': 'Ce document n\'a pu être trouvé.',
 
     insert: 'Indexation',
 
