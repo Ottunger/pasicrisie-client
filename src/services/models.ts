@@ -56,12 +56,10 @@ export interface AWSPasswordCommand {
 }
 
 export interface Tome {
-    _id: string;
-    kind: string;
-    author: string;
-    desc: string;
-    keywords: string[];
-    issue: string;
+    id: string[];
+    kind: string[];
+    author: string[];
+    issue: string[];
     fulltext: string[];
 }
 export interface TomeSearchOptions {
@@ -69,8 +67,6 @@ export interface TomeSearchOptions {
     dateMin?: string;
     dateMax?: string;
     author?: string;
-    desc?: string;
-    keywords?: string;
     fulltext?: string;
 }
 

@@ -98,15 +98,7 @@ export class ProfilePage extends UnsubscribingComponent {
         this.loggedIn = loggedIn;
         if(loggedIn && location.search.indexOf('=') > -1) {
             const tome = decodeURIComponent(location.search.split('=')[1]).split('-');
-            this.api.getPdf({
-                _id: tome[1],
-                kind: tome[0],
-                author: undefined,
-                desc: undefined,
-                keywords: undefined,
-                issue: undefined,
-                fulltext: undefined
-            }, false);
+            this.api.getPdf(tome[0], tome[1], false);
         }
     }
 
@@ -287,15 +279,7 @@ export class ProfilePage extends UnsubscribingComponent {
         this.api.info().then(() => {
             if(location.search.indexOf('=') > -1) {
                 const tome = decodeURIComponent(location.search.split('=')[1]).split('-');
-                this.api.getPdf({
-                    _id: tome[1],
-                    kind: tome[0],
-                    author: undefined,
-                    desc: undefined,
-                    keywords: undefined,
-                    issue: undefined,
-                    fulltext: undefined
-                }, false);
+                this.api.getPdf(tome[0], tome[1], false);
             } else {
                 this.api.changeRoot$.emit(SearchPage);
             }

@@ -14,8 +14,6 @@ export const en_strings = {
     'search.begin': 'Begin search',
     'search.tome': 'Available parutions',
     'search.author': 'Author',
-    'search.desc': 'Parution description',
-    'search.keywords': 'Keywords choice',
     'search.doneKeywords': 'Selection of keywords',
     'search.indices': 'Advanced search',
     'search.indicesLong': 'Here is a list of chapters within the bulletin. After making a choice, you\'ll visualize it and will be able to search directly' +

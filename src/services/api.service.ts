@@ -127,8 +127,7 @@ export class ApiService extends Application {
     getAvailableBooks(opts: TomeSearchOptions): Promise<Tome[]> {
         return new Promise((resolve, reject) => {
             this.http.get<Results<Tome[]>>(this.CONFIG.api.baseUri + 'find-books?dateMin=' + (opts.dateMin || '') + '&dateMax='
-                + (opts.dateMax || '') + '&author=' + (opts.author || '') + '&desc=' + (opts.desc || '') + '&keywords='
-                + (opts.keywords || '') + '&fulltext=' + (opts.fulltext || '') + '&kind=' + opts.kind,
+                + (opts.dateMax || '') + '&author=' + (opts.author || '') + '&fulltext=' + (opts.fulltext || '') + '&kind=' + opts.kind,
                 this.httpOptions)
                     .timeout(20000).take(1).subscribe((res: Results<Tome[]>) => {
                 this.processMessages(res);
@@ -137,12 +136,12 @@ export class ApiService extends Application {
         });
     }
 
-    getPdf(tome: Tome, blank: boolean) {
+    getPdf(kind: string, id: string, blank: boolean) {
         const s3 = new AWS.S3();
         const newWindow: any = window.open('/', blank? '_blank' : '_self', undefined, true);
         s3.getObject({
             Bucket: 'pasicrisie-pdf',
-            Key: tome.kind + '/' + tome._id + '.pdf'
+            Key: kind + '/' + id + '.pdf'
         }, (err, data) => {
             if(err) {
                 console.warn(err);

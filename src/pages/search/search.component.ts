@@ -72,24 +72,14 @@ export class SearchPage extends UnsubscribingComponent {
         this.api.getAvailableBooks({
             kind: this.kind,
             author: this.author,
-            desc: this.desc,
-            keywords: this.keywords,
             fulltext: this.fulltext
         }).then(availableBooks => this.availableBooks = availableBooks,
             this.api.presentErr.bind(this.api));
     }
 
     onMenuSelect() {
-        this.api.getPdf({
-            _id: this.pdf.toLowerCase().replace(/'/g, '')
-                .replace(/ /g, '_').replace(/\s*\(.*\)\s*/g, ''),
-            kind: 'bulletin',
-            author: undefined,
-            desc: undefined,
-            keywords: undefined,
-            issue: undefined,
-            fulltext: undefined
-        }, true);
+        this.api.getPdf('bulletin', this.pdf.toLowerCase().replace(/'/g, '')
+            .replace(/ /g, '_').replace(/\s*\(.*\)\s*/g, ''), true);
     }
 
     doInfinite() {

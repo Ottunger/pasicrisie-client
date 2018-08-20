@@ -14,8 +14,6 @@ export const fr_strings = {
     'search.begin': 'Lancer la recherche',
     'search.tome': 'Type de parution',
     'search.author': 'Auteur',
-    'search.desc': 'Description de la parution',
-    'search.keywords': 'Choix des mots-clés',
     'search.doneKeywords': 'Suggestion de mots-clés',
     'search.indices': 'Recherche avancée',
     'search.indicesLong': 'Nous vous proposons ci-dessous un menu déroulant avec l’ensemble des chapitres du bulletin. Après avoir sélectionné l’un d’entre eux, vous le visualiserez et ainsi pourrez faire la recherche directement dans le pdf associé.',
