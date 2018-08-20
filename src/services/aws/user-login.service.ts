@@ -25,8 +25,12 @@ export class UserLoginService {
         if (env) {
             clientParams.endpoint = env.sts_endpoint;
         }
-        const sts = new STS(clientParams);
-        sts.getCallerIdentity((err: any, data: any) => callback && callback.cognitoCallback(undefined, session));
+        if(/Safari/.test(navigator.userAgent)) {
+            if(callback) callback.cognitoCallback(undefined, session);
+        } else {
+            const sts = new STS(clientParams);
+            sts.getCallerIdentity((err: any, data: any) => callback && callback.cognitoCallback(undefined, session));
+        }
     }
 
     private onLoginError = (callback: CognitoCallback, err: any) => {

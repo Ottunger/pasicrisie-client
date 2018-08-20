@@ -145,6 +145,7 @@ export class ApiService extends Application {
         }, (err, data) => {
             if(err) {
                 console.warn(err);
+                this.presentErr('search.noItem');
                 return;
             }
             newWindow.location = URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'}));

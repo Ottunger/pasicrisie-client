@@ -25,6 +25,7 @@ export const en_strings = {
     'search.doKeyword': 'Add as keyword',
     'search.do': 'Search!',
     'search.intro1': 'We are pleased to help you search documents using two methods : the plain text search and the advanced search.',
+    'search.noItem': 'This document cannot be found.',
 
     insert: 'Indexation',
 
