@@ -138,17 +138,32 @@ export class ApiService extends Application {
 
     getPdf(kind: string, id: string, blank: boolean) {
         const s3 = new AWS.S3();
-        const newWindow: any = window.open('/', blank? '_blank' : '_self', undefined, true);
-        s3.getObject({
-            Bucket: 'pasicrisie-pdf',
-            Key: kind + '/' + id + '.pdf'
-        }, (err, data) => {
-            if(err) {
-                console.warn(err);
-                this.presentErr('search.noItem');
-                return;
-            }
-            newWindow.location = URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'}));
-        });
+        if(blank) {
+            const newWindow: any = window.open('/', '_blank', undefined, true);
+            s3.getObject({
+                Bucket: 'pasicrisie-pdf',
+                Key: kind + '/' + id + '.pdf'
+            }, (err, data) => {
+                if(err) {
+                    console.warn(err);
+                    this.presentErr('search.noItem');
+                    return;
+                }
+                newWindow.location = URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'}));
+            });
+        } else {
+            s3.getObject({
+                Bucket: 'pasicrisie-pdf',
+                Key: kind + '/' + id + '.pdf'
+            }, (err, data) => {
+                if(err) {
+                    console.warn(err);
+                    this.presentErr('search.noItem');
+                    return;
+                }
+                window.open(URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'})),
+                    '_self', undefined, false);
+            });
+        }
     }
 }
