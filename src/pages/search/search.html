@@ -62,7 +62,7 @@
                             </button>
                             <button *ngIf="res.fulltext[0] !== true" ion-item (click)="api.getPdf(res.kind[0], res.id[0], true)">
                                 <ion-icon name="analytics" item-start></ion-icon>
-                                <ion-label>{{res.fulltext[0]}}</ion-label>
+                                <ion-label style="white-space: unset;">{{res.fulltext[0]}}</ion-label>
                             </button>
                         </ion-card-content>
                     </ion-card>
