@@ -86,3 +86,24 @@ p.p-margins {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+
+.select-large {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    select {
+        height: 38px;
+        border: none;
+        width: 100%;
+        color: map-get($colors, 'primary');
+        background-color: map-get($colors, 'light-secondary');
+    }
+    div {
+        width: 200%;
+
+        p {
+            color: map-get($colors, 'primary')!important;
+        }
+    }
+}

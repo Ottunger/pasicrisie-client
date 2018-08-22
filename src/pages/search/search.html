@@ -43,12 +43,18 @@
             <ion-item>
                 <ion-label color="primary" style="white-space: unset;">{{'search.indicesLong' | translate}}</ion-label>
             </ion-item>
-            <ion-item>
-                <ion-label color="primary" stacked>{{'search.indices' | translate}}</ion-label>
-                <ion-select [(ngModel)]="pdf" cancelText="{{'cancel' | translate}}" okText="{{'submit' | translate}}" (ionChange)="onMenuSelect()">
-                    <ion-option *ngFor="let possibleIndex of possibleIndices;" [value]="possibleIndex">{{possibleIndex}}</ion-option>
-                </ion-select>
-            </ion-item>
+            <div class="item item-block item-md">
+                <div class="item-inner">
+                    <div class="input-wrapper select-large">
+                        <div>
+                            <p>{{'search.indices' | translate}}</p>
+                        </div>
+                        <select [(ngModel)]="pdf" (change)="onMenuSelect()">
+                            <option *ngFor="let possibleIndex of possibleIndices;" [value]="possibleIndex">{{possibleIndex}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <button ion-button block color="secondary" (click)="searchTome()"
                     [disabled]="!kind">{{'search.do' | translate}}</button>
             <hr/>
