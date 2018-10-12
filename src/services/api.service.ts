@@ -136,7 +136,7 @@ export class ApiService extends Application {
         });
     }
 
-    getPdf(kind: string, id: string, blank: boolean) {
+    getPdf(kind: string, id: string, blank: boolean, distance: number = 0) {
         const s3 = new AWS.S3();
         if(blank) {
             const newWindow: any = window.open('/', '_blank', undefined, true);
@@ -150,6 +150,7 @@ export class ApiService extends Application {
                     return;
                 }
                 newWindow.location = URL.createObjectURL(new Blob([data.Body], {type: 'application/pdf'}));
+                newWindow.scrollTo(0, distance? (-400 + distance * document.documentElement.scrollHeight) : 0);
             });
         } else {
             s3.getObject({

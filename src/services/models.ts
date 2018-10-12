@@ -61,6 +61,7 @@ export interface Tome {
     author: string[];
     issue: string[];
     fulltext: string[];
+    distance: number;
 }
 export interface TomeSearchOptions {
     kind: string;
