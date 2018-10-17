@@ -90,4 +90,10 @@ export class SearchPage extends UnsubscribingComponent {
     invalidOption(type: string): boolean {
         return this.api.userInfo['cognito:groups'].indexOf(type === 'bulletin'? 'bulletin_readers' : 'recueil_readers') === -1;
     }
+
+    clearify(excerpt: string) {
+        return excerpt.replace(/\s[0-9]+\s*\.[^0-9]/g, match => match.substring(0, 1) + '<span style="background-color: yellowgreen">'
+                + match.substring(1, match.length - 1) + '</span>' + match.substring(match.length - 1))
+            .replace(/\*\*\*[^*]+\*\*\*/g,match => '<span style="background-color: wheat">' + match.replace(/\*\*\*/g, '') + '</span>');
+    }
 }

@@ -9,6 +9,7 @@ import {ProfilePage} from '../pages/profile/profile.component';
 import {SearchPage} from '../pages/search/search.component';
 import {InsertPage} from '../pages/insert/insert.component';
 import {SettingsPopover} from '../pages/settings/settings.component';
+import {SafeHtmlPipe} from '../pipes/safe-html.pipe';
 import {TranslatePipe} from '../pipes/translate.pipe';
 import {ApiService} from '../services/api.service';
 import {MyApp} from './app.component';
@@ -21,6 +22,7 @@ import {UserRegistrationService} from '../services/aws/user-registration.service
 @NgModule({
     declarations: [
         TranslatePipe,
+        SafeHtmlPipe,
         MyApp,
         ProfilePage,
         SearchPage,
