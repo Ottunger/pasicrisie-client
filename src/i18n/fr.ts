@@ -16,7 +16,8 @@ export const fr_strings = {
     'search.author': 'Auteur',
     'search.doneKeywords': 'Suggestion de mots-clés',
     'search.indices': 'Recherche avancée',
-    'search.indicesLong': 'Nous vous proposons ci-dessous un menu déroulant avec l’ensemble des chapitres du bulletin. Après avoir sélectionné l’un d’entre eux, vous le visualiserez et ainsi pourrez faire la recherche directement dans le pdf associé.',
+    'search.indicesLong': 'Nous vous proposons ci-dessous un menu déroulant avec l’ensemble des chapitres du Bulletin. Après avoir sélectionné l’un d’entre' +
+        ' eux, vous le visualiserez et ainsi pourrez faire la recherche directement dans le pdf associé.',
     'search.fulltext': 'Recherche plein texte',
     'search.fulltextLong': 'Vous pouvez saisir le terme recherché dans le champ texte ci-dessous ; le système vous proposera alors l’ensemble des documents où le terme saisi est identifié.',
     'search.noBooks': 'Aucune liste de documents',
@@ -53,9 +54,10 @@ export const fr_strings = {
     'login.fillDetails': 'Détails de compte',
     'login.fillDetailsLong': 'Remplissez vos détails pour un nouveau compte personnel ou invité',
     'profile.intro1': '<p class="p-margins">Cher(chère) abonné(e),<p>' +
-        '<p class="p-margins">Nous vous souhaitons la bienvenue dans le module de recherche du Bulletin administratif de la Pasicrisie Luxembourgeoise.<br/>' +
-        'Ce module vous permettra de faire des recherches à la fois thématiques et par mots-clés pour retrouver d’éventuels arrêts/jugements.<br/>' +
-        'Si vous n’êtes pas encore abonné, et que vous souhaitez l’être, nous vous invitons à faire votre demande auprès de (abo@pasicrisie.lu).</p>',
+        '<p class="p-margins">Nous vous souhaitons la bienvenue dans le module de recherche du BULLETIN DE JURISPRUDENCE ADMINISTRATIVE de la Pasicrisie' +
+        ' luxembourgeoise.<br/>Ce module vous permettra de faire des recherches à la fois thématiques et par mots-clés.<br/>' +
+        'Si vous n’êtes pas encore abonné, et que vous souhaitez l’être, nous vous invitons à faire votre' +
+        ' demande auprès de <a href="mailto:abo@pasicrisie.lu?subject=Demande%20d\'abonnement%20bulletin%20online" target="_blank">abo@pasicrisie.lu</a>.</p>',
 
     'settings.title': 'Paramètres',
     'settings.language': 'Langue'

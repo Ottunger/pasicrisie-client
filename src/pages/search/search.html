@@ -26,7 +26,8 @@
             <ion-item>
                 <ion-label color="primary" stacked>{{'search.tome' | translate}}</ion-label>
                 <ion-select [(ngModel)]="kind" cancelText="{{'cancel' | translate}}" okText="{{'done' | translate}}">
-                    <ion-option *ngFor="let kind of availableTypes" [value]="kind" [disabled]="invalidOption(kind)">{{kind}}</ion-option>
+                    <ion-option *ngFor="let kind of availableTypes" [value]="kind" [disabled]="invalidOption(kind)">
+                        {{kind.substr(0, 1).toUpperCase() + kind.substr(1)}}</ion-option>
                 </ion-select>
             </ion-item>
             <ion-item>
@@ -64,7 +65,7 @@
                     <ion-card *ngIf="i < displays">
                         <ion-card-content class="book-wrapper state-tome">
                             <button ion-item (click)="api.getPdf(res.kind[0], res.id[0], true, res.distance)">
-                                <ion-label>{{res.author}}: {{res.id[0]}}</ion-label>
+                                <ion-label><!--{{res.author}}: -->{{res.id[0]}}</ion-label>
                             </button>
                             <button *ngIf="res.fulltext[0] !== true" ion-item (click)="api.getPdf(res.kind[0], res.id[0], true, res.distance)">
                                 <ion-icon name="analytics" item-start></ion-icon>
