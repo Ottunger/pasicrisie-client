@@ -22,6 +22,7 @@ export class SearchPage extends UnsubscribingComponent {
     displays = 10;
 
     possibleIndices = [
+        'ACCES AUX DOCUMENTS',
         'ACTES ADMINISTRATIFS',
         'ACTES REGLEMENTAIRES (RECOURS CONTRE LES)',
         'AGRICULTURE',
