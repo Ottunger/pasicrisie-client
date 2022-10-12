@@ -23,7 +23,8 @@ export const fr_strings = {
     'search.noBooks': 'Aucune liste de documents',
     'search.doKeyword': 'Ajouter comme filtre',
     'search.do': 'Rechercher!',
-    'search.intro1': 'Nous vous invitons à rechercher vos documents selon deux types de recherche : la recherche plein texte et la recherche avancée.',
+    'search.intro1': 'Nous vous invitons à rechercher vos documents selon deux types de recherche : la recherche plein texte et la recherche avancée.<br/>' +
+		' Vous pouvez également consuter le pdf complet du Volume II du Bulletin depuis la liste déroulante "Recherche avancée".',
     'search.noItem': 'Ce document n\'a pu être trouvé.',
 
     insert: 'Indexation',

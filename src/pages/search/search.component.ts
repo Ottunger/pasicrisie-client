@@ -22,6 +22,7 @@ export class SearchPage extends UnsubscribingComponent {
     displays = 10;
 
     possibleIndices = [
+		'BULLETIN ADMIN VOLUME II',
         'ACCES AUX DOCUMENTS',
         'ACTES ADMINISTRATIFS',
         'ACTES REGLEMENTAIRES (RECOURS CONTRE LES)',
